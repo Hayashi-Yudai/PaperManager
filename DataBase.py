@@ -1,4 +1,22 @@
+import sqlite3 as sq
+
 class PaperDataBase:
+    def __init__(self):
+        self.db, self.c = self.set_DB()
+        self.set_Table()
+
+    def set_DB(self):
+        db = sq.connect('JData.db')
+        c = db.cursor()
+
+        return db, c
+
+    def set_Table(self):
+        try:
+            self.c.execute("create table Journal(filename, url, title, authors, journal, year, abstract);")
+        except sq.OperationalError:
+            pass
+
 
     def SearchDB(self, FileName, Author, KeyWords):
         """
@@ -21,6 +39,23 @@ class PaperDataBase:
         raise AssertionError
 
 class FilePath:
+
+    def __init__(self):
+        self.db, self.c = self.set_DB()
+        self.set_Table()
+
+    def set_DB(self):
+        db = sq.connect('FilePath.db')
+        c = db.cursor()
+
+        return db, c
+
+    def set_Table(self):
+        try:
+            self.c.execute("create table FilePath(path);")
+        except sq.OperationalError:
+            pass
+
 
     def is_empty(self):
         """
