@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import (QAction, QApplication, QGridLayout, QHBoxLayout, QMainWindow, QMessageBox,
-                             QLabel, QLineEdit, QPushButton, QTextEdit, QVBoxLayout, QWidget)
+                             QLabel, QLineEdit, QListWidget, QPushButton, QTextEdit, QVBoxLayout, QWidget)
 from PyQt5.QtGui import QIcon
 
 import DataBase
@@ -89,10 +89,9 @@ class MainWindow(QMainWindow):
         return buttons
 
     def TextBox(self):
-        self.Search_result = QTextEdit()
+        self.Search_result = QListWidget()
         self.LaTex_result = QTextEdit()
 
-        self.Search_result.setReadOnly(True)
         self.LaTex_result.setReadOnly(True)
         text = QHBoxLayout()
         text.addWidget(self.Search_result)
