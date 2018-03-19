@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import (QAction, QApplication, QGridLayout, QHBoxLayout, QMainWindow, QMessageBox,
                              QLabel, QLineEdit, QListWidget, QPushButton, QTextEdit, QVBoxLayout, QWidget)
 from PyQt5.QtGui import QIcon
+import os
 
 import DataBase
 import LaTeX
@@ -98,6 +99,8 @@ class MainWindow(QMainWindow):
         text.addWidget(self.Search_result)
         text.addWidget(self.LaTex_result)
 
+        self.Search_result.itemDoubleClicked.connect(lambda item : self.OpenPDF(item))
+
         return text
 
     def get_KeyWord(self):
@@ -148,11 +151,16 @@ class MainWindow(QMainWindow):
         :return: None
         """
         research_result = DataBase.PaperDataBase().SearchDB(FileName, Author, KeyWords)
-        try:
+        if research_result != []:
             for item in research_result:
                 self.Search_result.addItem(item)
-        except:
+        else:
             raise AssertionError
+
+    def OpenPDF(self, item):
+        pdf_path = DataBase.PDFPath().SearchDB(item)
+        os.popen(pdf_path)
+
 
 class SetPath(QWidget):
     def __init__(self):
@@ -191,12 +199,18 @@ class SetPath(QWidget):
 
     def RegistPath(self):
         path = self.PathSpace.text()
-        DataBase.FilePath().add_path(path)
+        if path == '': return QMessageBox.critical(self, 'ERROR', 'File Path is empty!')
+        #TODO : When press 'OK' in MessageBox the path setting window also closed. Fix it!
+
+        file = DataBase.FilePath()
+        file.add_path(path)
+        file.close()
 
     def Delete(self):
-        DataBase.FilePath().clear()
+        file = DataBase.FilePath()
+        file.clear()
+        file.close()
         QMessageBox.information(self, 'Message', 'Deleted All Path from Data Base')
-
 
 if __name__ == '__main__':
     import sys

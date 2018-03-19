@@ -47,10 +47,10 @@ class PaperDataBase:
 class FilePath:
 
     def __init__(self):
-        self.db, self.c = self.set_DB()
+        self.db, self.c = self.__set_DB()
         self.set_Table()
 
-    def set_DB(self):
+    def __set_DB(self):
         db = sq.connect('FilePath.db')
         c = db.cursor()
 
@@ -89,3 +89,33 @@ class FilePath:
 
     def close(self):
         self.db.close()
+
+class PDFPath:
+    def __init__(self):
+        self.DB, self.c = self.__set_DB()
+        self.__set_Table()
+
+    def __set_DB(self):
+        DB = sq.connect('PDFPath.db')
+        c = DB.cursor()
+
+        return DB, c
+
+    def __set_Table(self):
+        try:
+            self.c.execute('create table PDF_path(FileName, Path);')
+        except sq.OperationalError:
+            pass
+
+    def SearchDB(self, FileName):
+        """
+        Return absolute path of a paper. Using this path, open PDF with os.popen(path) connected to QListWidget.
+        :param FileName: PDF File Name
+        :return: Absolute Path to the FileName
+        """
+        self.c.execute('search * from PDF_path where FileName=' + FileName)
+        for row in self.c:
+            return row[1]
+
+    def RegistEB(self, FileName, Path):
+        self.c.execute('insert into PDF_path values(?, ?)', (FileName, Path))
