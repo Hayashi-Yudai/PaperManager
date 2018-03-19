@@ -4,6 +4,10 @@
     <list default="true" id="fc7a160b-0acd-4892-ae49-3eabac142c8f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/DataBase.py" afterPath="$PROJECT_DIR$/DataBase.py" />
+      <change beforePath="$PROJECT_DIR$/FilePath.db" afterPath="$PROJECT_DIR$/FilePath.db" />
+      <change beforePath="$PROJECT_DIR$/JData.db" afterPath="$PROJECT_DIR$/JData.db" />
+      <change beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
+      <change beforePath="$PROJECT_DIR$/test.py" afterPath="$PROJECT_DIR$/test.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,43 +21,48 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+            <state relative-caret-position="267">
+              <caret line="198" column="0" lean-forward="true" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="0" />
               <folding>
                 <element signature="e#0#210#0" expanded="true" />
-                <element signature="e#308#4757#0" expanded="false" />
-                <element signature="e#336#496#0" expanded="false" />
-                <element signature="e#528#1580#0" expanded="false" />
-                <element signature="e#1617#1659#0" expanded="false" />
-                <element signature="e#1697#2480#0" expanded="false" />
-                <element signature="e#2513#2991#0" expanded="false" />
-                <element signature="e#3024#3278#0" expanded="false" />
-                <element signature="e#3315#3510#0" expanded="false" />
-                <element signature="e#3542#3846#0" expanded="false" />
-                <element signature="e#3884#4125#0" expanded="false" />
-                <element signature="e#4156#4375#0" expanded="false" />
-                <element signature="e#4438#4757#0" expanded="false" />
-                <element signature="e#4787#5835#0" expanded="false" />
+                <element signature="e#3376#3694#0" expanded="false" />
+                <element signature="e#3726#4119#0" expanded="false" />
+                <element signature="e#4429#4648#0" expanded="false" />
+                <element signature="e#4711#5152#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataBase.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DataBase.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DataBase.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="8" column="33" lean-forward="false" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
-              <folding />
+            <state relative-caret-position="164">
+              <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+              <folding>
+                <element signature="e#47#1678#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LaTeX.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LaTeX.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LaTeX.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" column="93" lean-forward="false" selection-start-line="4" selection-start-column="93" selection-end-line="4" selection-end-column="93" />
+            <state relative-caret-position="0">
+              <caret line="0" column="12" lean-forward="false" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
+              <folding>
+                <element signature="e#18#282#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="882">
+              <caret line="49" column="21" lean-forward="true" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -75,9 +84,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/LaTeX.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/DataBase.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -105,8 +114,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -132,7 +141,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.test">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -175,8 +184,8 @@
     </list>
     <recent_temporary>
       <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Python.main" />
-        <item index="1" class="java.lang.String" itemvalue="Python.test" />
+        <item index="0" class="java.lang.String" itemvalue="Python.test" />
+        <item index="1" class="java.lang.String" itemvalue="Python.main" />
       </list>
     </recent_temporary>
   </component>
@@ -224,30 +233,55 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="5" />
+      <option name="time" value="13" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#210#0" expanded="true" />
+            <element signature="e#3376#3694#0" expanded="false" />
+            <element signature="e#3726#4119#0" expanded="false" />
+            <element signature="e#4429#4648#0" expanded="false" />
+            <element signature="e#4711#5152#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataBase.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="20" lean-forward="false" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+          <folding>
+            <element signature="e#47#1678#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LaTeX.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="12" lean-forward="false" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
+          <folding>
+            <element signature="e#18#282#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#210#0" expanded="true" />
-            <element signature="e#308#4757#0" expanded="false" />
-            <element signature="e#336#496#0" expanded="false" />
-            <element signature="e#528#1580#0" expanded="false" />
-            <element signature="e#1617#1659#0" expanded="false" />
-            <element signature="e#1697#2480#0" expanded="false" />
-            <element signature="e#2513#2991#0" expanded="false" />
-            <element signature="e#3024#3278#0" expanded="false" />
-            <element signature="e#3315#3510#0" expanded="false" />
-            <element signature="e#3542#3846#0" expanded="false" />
-            <element signature="e#3884#4125#0" expanded="false" />
-            <element signature="e#4156#4375#0" expanded="false" />
-            <element signature="e#4438#4757#0" expanded="false" />
-            <element signature="e#4787#5835#0" expanded="false" />
+            <element signature="e#3376#3694#0" expanded="false" />
+            <element signature="e#3726#4119#0" expanded="false" />
+            <element signature="e#4429#4648#0" expanded="false" />
+            <element signature="e#4711#5152#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -256,7 +290,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
           <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#47#1678#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -264,54 +300,51 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="6" column="16" lean-forward="false" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
           <folding>
-            <element signature="e#0#210#0" expanded="true" />
-            <element signature="e#308#4757#0" expanded="false" />
-            <element signature="e#336#496#0" expanded="false" />
-            <element signature="e#528#1580#0" expanded="false" />
-            <element signature="e#1617#1659#0" expanded="false" />
-            <element signature="e#1697#2480#0" expanded="false" />
-            <element signature="e#2513#2991#0" expanded="false" />
-            <element signature="e#3024#3278#0" expanded="false" />
-            <element signature="e#3315#3510#0" expanded="false" />
-            <element signature="e#3542#3846#0" expanded="false" />
-            <element signature="e#3884#4125#0" expanded="false" />
-            <element signature="e#4156#4375#0" expanded="false" />
-            <element signature="e#4438#4757#0" expanded="false" />
-            <element signature="e#4787#5835#0" expanded="false" />
+            <element signature="e#18#282#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataBase.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="33" lean-forward="false" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/LaTeX.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="93" lean-forward="false" selection-start-line="4" selection-start-column="93" selection-end-line="4" selection-end-column="93" />
+        <state relative-caret-position="0">
+          <caret line="0" column="12" lean-forward="false" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
+          <folding>
+            <element signature="e#18#282#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="198" column="0" lean-forward="true" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#210#0" expanded="true" />
+            <element signature="e#3376#3694#0" expanded="false" />
+            <element signature="e#3726#4119#0" expanded="false" />
+            <element signature="e#4429#4648#0" expanded="false" />
+            <element signature="e#4711#5152#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="882">
+          <caret line="49" column="21" lean-forward="true" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataBase.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+          <folding>
+            <element signature="e#47#1678#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

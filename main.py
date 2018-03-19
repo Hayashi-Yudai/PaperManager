@@ -89,6 +89,7 @@ class MainWindow(QMainWindow):
         return buttons
 
     def TextBox(self):
+        #Can use Search_resilt.itemDoubleClicked.connect() ?
         self.Search_result = QListWidget()
         self.LaTex_result = QTextEdit()
 
@@ -101,17 +102,21 @@ class MainWindow(QMainWindow):
 
     def get_KeyWord(self):
         """
+        Transform entered KeyWords to a list of string
         :return: String List of KeyWords
         """
         KeyWord = self.KeyWords.text()
 
+        if ', ' in KeyWord:
+            return KeyWord.split(', ')
         if ',' in KeyWord:
             return KeyWord.split(',')
+
         return KeyWord.split(' ')
 
     def Search(self):
-        FileName = self.FileName.text()
-        Author = self.Author.text()
+        FileName = self.FileName.text() #get FileName from FileName in TextEntrance
+        Author = self.Author.text()     #get Authors from Author in TextEntrance
         KeyWords = self.get_KeyWord()   #String List of KeyWords
 
         try:
@@ -143,8 +148,11 @@ class MainWindow(QMainWindow):
         :return: None
         """
         research_result = DataBase.PaperDataBase().SearchDB(FileName, Author, KeyWords)
-
-        raise AssertionError
+        try:
+            for item in research_result:
+                self.Search_result.addItem(item)
+        except:
+            raise AssertionError
 
 class SetPath(QWidget):
     def __init__(self):
@@ -162,12 +170,16 @@ class SetPath(QWidget):
         Buttons = QHBoxLayout()
         self.OKButton = QPushButton('OK')
         self.CancelButton = QPushButton('Cancel')
-        self.ConfirmPath = QPushButton('Confirm Path')
+        self.DeletePath = QPushButton('Delete Path')
         Buttons.addWidget(self.OKButton)
         Buttons.addWidget(self.CancelButton)
-        Buttons.addWidget(self.ConfirmPath)
+        Buttons.addWidget(self.DeletePath)
 
         self.OKButton.clicked.connect(self.RegistPath)
+        self.OKButton.clicked.connect(self.close)
+        self.CancelButton.clicked.connect(self.close)
+        self.DeletePath.clicked.connect(self.Delete)
+
 
         PathWindow = QVBoxLayout()
         PathWindow.addLayout(PathEntrance)
@@ -180,6 +192,11 @@ class SetPath(QWidget):
     def RegistPath(self):
         path = self.PathSpace.text()
         DataBase.FilePath().add_path(path)
+
+    def Delete(self):
+        DataBase.FilePath().clear()
+        QMessageBox.information(self, 'Message', 'Deleted All Path from Data Base')
+
 
 if __name__ == '__main__':
     import sys
