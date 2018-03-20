@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fc7a160b-0acd-4892-ae49-3eabac142c8f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/DataBase.py" afterPath="$PROJECT_DIR$/DataBase.py" />
-      <change beforePath="$PROJECT_DIR$/FilePath.db" afterPath="$PROJECT_DIR$/FilePath.db" />
-      <change beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
-      <change beforePath="$PROJECT_DIR$/test.py" afterPath="$PROJECT_DIR$/test.py" />
-    </list>
+    <list default="true" id="fc7a160b-0acd-4892-ae49-3eabac142c8f" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +14,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-957">
-              <caret line="175" column="23" lean-forward="false" selection-start-line="175" selection-start-column="23" selection-end-line="175" selection-end-column="23" />
+            <state relative-caret-position="123">
+              <caret line="170" column="0" lean-forward="true" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="0" />
               <folding>
                 <element signature="e#0#210#0" expanded="true" />
                 <element signature="e#320#5381#0" expanded="false" />
@@ -96,7 +90,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="364" />
     <option name="y" value="17" />
     <option name="width" value="889" />
@@ -212,7 +206,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15885799" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -404,8 +398,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-957">
-          <caret line="175" column="23" lean-forward="false" selection-start-line="175" selection-start-column="23" selection-end-line="175" selection-end-column="23" />
+        <state relative-caret-position="123">
+          <caret line="170" column="0" lean-forward="true" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="0" />
           <folding>
             <element signature="e#0#210#0" expanded="true" />
             <element signature="e#320#5381#0" expanded="false" />
