@@ -1,4 +1,6 @@
+import os
 import sqlite3 as sq
+
 
 class PaperDataBase:
     def __init__(self):
@@ -44,11 +46,17 @@ class PaperDataBase:
         #TODO : Scrape the HP and get neccesary info -> if cannnot, raise AssertionError
         raise AssertionError
 
+
+
+
+
 class FilePath:
 
     def __init__(self):
         self.db, self.c = self.__set_DB()
         self.set_Table()
+
+
 
     def __set_DB(self):
         db = sq.connect('FilePath.db')
@@ -56,11 +64,14 @@ class FilePath:
 
         return db, c
 
+
+
     def set_Table(self):
         try:
             self.c.execute("create table FilePath(path);")
         except sq.OperationalError:
             pass
+
 
 
     def is_empty(self):
@@ -76,6 +87,8 @@ class FilePath:
 
         return True
 
+
+
     def add_path(self, path):
         sql = "insert into FilePath values(?);"
         self.c.execute(sql, [path])
@@ -83,17 +96,39 @@ class FilePath:
 
         return None
 
+
+
+    def get_path(self):
+        self.c.execute('select * from FilePath')
+        result = []
+        for row in self.c:
+            result.append(row[0])
+
+        return result
+
+
+
     def clear(self):
         self.c.execute("delete from FilePath;")
         self.db.commit()
 
+
+
     def close(self):
         self.db.close()
 
+
+
+
+
+
 class PDFPath:
+
     def __init__(self):
         self.DB, self.c = self.__set_DB()
         self.__set_Table()
+
+
 
     def __set_DB(self):
         DB = sq.connect('PDFPath.db')
@@ -101,11 +136,15 @@ class PDFPath:
 
         return DB, c
 
+
+
     def __set_Table(self):
         try:
             self.c.execute('create table PDF_path(FileName, Path);')
         except sq.OperationalError:
             pass
+
+
 
     def SearchDB(self, FileName):
         """
@@ -117,5 +156,47 @@ class PDFPath:
         for row in self.c:
             return row[1]
 
+
+
     def RegistEB(self, FileName, Path):
         self.c.execute('insert into PDF_path values(?, ?)', (FileName, Path))
+
+
+
+    def paper_list(self, path):
+        """
+        :param path: path to paper folder
+        :return: list of papers
+        """
+        os.chdir(path)
+        result = []
+        for dir in os.listdir():
+            if os.path.isdir(path + "/" + dir):
+                result.extend(self.paper_list(path + "/" + dir))
+            elif "pdf" in dir:
+                result.append((path +  '\\' + dir).replace('\\', '/'))
+
+        return result
+
+
+
+    def NotRregistrated(self):
+        """
+        Find PDF file not registrated in the PDF_path
+        :return: List
+        """
+        path = FilePath().get_path()
+        registered = []
+        self.c.execute('select * from PDF_path')
+        for row in self.c:
+            registered.append(row[1])
+
+        return list(set(self.paper_list(path)) - set(registered))
+
+
+
+    def DeletedAlready(self):
+        """
+        Find PDF files deleted already from directory but still registered in the PDF_path.
+        :return: List
+        """

@@ -6,6 +6,8 @@ import os
 import DataBase
 import LaTeX
 
+
+
 class MainWindow(QMainWindow):
 
     def __init__(self):
@@ -162,18 +164,27 @@ class MainWindow(QMainWindow):
         os.popen(pdf_path)
 
 
+
+
+
 class SetPath(QWidget):
+
     def __init__(self):
         super().__init__()
         self.setWindowIcon(QIcon('icon.png'))
         self.initUI()
+        self.showPath()
 
     def initUI(self):
         PathEntrance = QGridLayout()
         Phrase = QLabel('Setting the paper folder')
         self.PathSpace = QLineEdit()
+        self.PathPhrase = QLabel('Registerd Path :')
+        self.PathList = QListWidget()
         PathEntrance.addWidget(Phrase,0,0)
-        PathEntrance.addWidget(self.PathSpace,1,0)
+        PathEntrance.addWidget(self.PathSpace, 1, 0)
+        PathEntrance.addWidget(self.PathPhrase, 2, 0)
+        PathEntrance.addWidget(self.PathList, 3, 0)
 
         Buttons = QHBoxLayout()
         self.OKButton = QPushButton('OK')
@@ -194,8 +205,16 @@ class SetPath(QWidget):
         PathWindow.addLayout(Buttons)
         self.setLayout(PathWindow)
 
-        self.setGeometry(300, 300, 600, 100)
+        self.setGeometry(300, 300, 400, 150)
         self.show()
+
+
+    def showPath(self):
+        path = DataBase.FilePath().get_path()
+        for item in path:
+            self.PathList.addItem(item)
+
+
 
     def RegistPath(self):
         path = self.PathSpace.text()
@@ -206,11 +225,17 @@ class SetPath(QWidget):
         file.add_path(path)
         file.close()
 
+
+
     def Delete(self):
         file = DataBase.FilePath()
         file.clear()
         file.close()
         QMessageBox.information(self, 'Message', 'Deleted All Path from Data Base')
+
+
+
+
 
 if __name__ == '__main__':
     import sys
