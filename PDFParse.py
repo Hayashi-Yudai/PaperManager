@@ -7,6 +7,9 @@ from pdfminer.layout import LTTextBoxHorizontal
 
 import re
 
+
+
+
 class PDFAnalyze:
 
     def __init__(self, path):
@@ -58,6 +61,9 @@ class PhysRev(PDFAnalyze):
 
                     elif 'PhysRevB' in JournalInfo.group():
                         return 'https://journals.aps.org/prb/abstract/' + JournalInfo.group()[5:]
+
+                    elif 'RevModPhys' in JournalInfo.group():
+                        return 'https://journals.aps.org/rmp/abstract/' + JournalInfo.group()[5:]
 
 
         return -1
@@ -111,6 +117,26 @@ class JPSJ(PDFAnalyze):
                 JournalInfo = re.search(r'DOI: \d+.\d+/\w+.\d+.\d+', l.get_text())
                 if JournalInfo:
                     return 'http://journals.jps.jp/doi/abs/' + JournalInfo.group()[5:]
+
+        return -1
+
+
+
+
+
+class APL(PDFAnalyze):
+    def __init__(self, path):
+        super().__init__(path)
+
+
+
+    def get_URL(self):
+        layout = self.get_PDFLayout(0)
+        for l in layout:
+            if isinstance(l, LTTextBoxHorizontal):
+                JournalInfo = re.search(r'http://dx.doi.org/\d+.\d+/\d+.\d+', l.get_text())
+                if JournalInfo:
+                    return JournalInfo.group()
 
         return -1
 
