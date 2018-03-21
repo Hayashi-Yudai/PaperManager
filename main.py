@@ -183,7 +183,6 @@ class MainWindow(QMainWindow):
 
     def AutoRegistration(self):
         #TODO : Find papers have not been registered yet
-        
         #TODO : Regisit these papers
         return None
 
@@ -206,6 +205,7 @@ class MainWindow(QMainWindow):
         :return: None
         """
         research_result = DataBase.PaperDataBase().SearchDB(FileName, Author, KeyWords)
+        self.Search_result.clear()
         if research_result != []:
             for item in research_result:
                 self.Search_result.addItem(item)

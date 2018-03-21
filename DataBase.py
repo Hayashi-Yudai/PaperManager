@@ -1,6 +1,10 @@
 import os
 import sqlite3 as sq
 
+import PDFParse
+import WebSCraping
+
+
 
 class PaperDataBase:
 
@@ -50,9 +54,35 @@ class PaperDataBase:
         :param URL: URL to the info page of the paer
         :return: None. Registrate the journal info to DataBase
         """
-        #TODO : If URL = '', analyze PDF file and get URL -> if cannot, raise AassertionError
-        #TODO : Scrape the HP and get neccesary info -> if cannnot, raise AssertionError
-        raise AssertionError
+
+        StrList = list
+        sq.register_adapter(StrList, lambda l: ';'.join([str(i) for i in l]))
+        sq.register_converter("StrList", lambda s: [str(i) for i in s.split(';')])
+
+
+        if URL == '':
+            PDF_Directory = PDFPath().SearchDB(FileName)
+            URL = PDFParse.PDFAnalyze().get_URL(PDF_Directory)
+        if URL == -1:
+            raise AssertionError
+
+        Scrape = WebSCraping.Scraper(URL)
+
+        Title = Scrape.get_title()
+        AuthorName = Scrape.get_authors()
+        Year = Scrape.get_year()
+        JournalName = Scrape.get_JName()
+        Vol = Scrape.get_Vol()
+        Abstract = Scrape.get_Abst()
+
+        if Title == -1 or AuthorName == -1 or Year == -1 or JournalName == -1 or Vol == -1 or Abstract == -1:
+            raise AssertionError
+
+        self.c.execute('insert into Journal values(?,?,?,?,?,?,?,?,?)', (FileName, URL, Title, AuthorName, Year,
+                                                                         JournalName, Vol, Abstract))
+        self.db.commit()
+
+        return None
 
 
 
