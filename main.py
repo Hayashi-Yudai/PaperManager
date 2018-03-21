@@ -1,3 +1,8 @@
+#***********************************Future Plan*************************************************
+# Compile abstract info with LaTeX and show in a panel
+# Setting some keyword and notificate periodically new papers relate to those words
+#***********************************************************************************************
+
 from PyQt5.QtWidgets import (QAction, QApplication, QGridLayout, QHBoxLayout, QMainWindow, QMessageBox,
                              QLabel, QLineEdit, QListWidget, QPushButton, QTextEdit, QVBoxLayout, QWidget)
 from PyQt5.QtGui import QIcon
@@ -17,7 +22,12 @@ class MainWindow(QMainWindow):
         if DataBase.FilePath().is_empty():
             self.SetFilePath()
 
+
+
     def initUI(self):
+        ############################################
+        # Widget layout
+        ############################################
         centralWidget = QWidget()
 
         TextEntrance = self.TextEntrance()
@@ -33,10 +43,18 @@ class MainWindow(QMainWindow):
         centralWidget.setLayout(MainLayout)
         self.setCentralWidget(centralWidget)
 
+
+
+        ############################################
+        # Menubar Layout
+        ############################################
         exitAction = QAction('Exit', self)
         exitAction.setShortcut('Ctrl+Q')
         exitAction.setStatusTip('Exit application')
         exitAction.triggered.connect(self.close)
+
+        registerAction = QAction('Auto Register', self)
+        registerAction.triggered.connect(self.AutoRegistration)
 
         pathAction = QAction('Path', self)
         pathAction.triggered.connect(self.SetFilePath)
@@ -45,15 +63,20 @@ class MainWindow(QMainWindow):
         fileMenu = menubar.addMenu('&File')
         pathmenu = menubar.addMenu('&Setting')
         fileMenu.addAction(exitAction)
+        fileMenu.addAction(registerAction)
         pathmenu.addAction(pathAction)
 
         self.setGeometry(300, 100, 600, 400)
         self.setWindowTitle('PaperResearcher')
         self.show()
 
+
+
     def SetFilePath(self):
         self.ex = SetPath()
         self.ex.show()
+
+
 
     def TextEntrance(self):
         self.FileName = QLineEdit()
@@ -76,6 +99,8 @@ class MainWindow(QMainWindow):
 
         return Text_Entrance
 
+
+
     def Buttons(self):
         buttons = QVBoxLayout()
         SearchBottun = QPushButton('Search')
@@ -91,19 +116,32 @@ class MainWindow(QMainWindow):
 
         return buttons
 
+
+
     def TextBox(self):
-        #Can use Search_resilt.itemDoubleClicked.connect() ?
+        self.search_phrase = QLabel('Search Result :')
+        self.latex_phrase = QLabel('LaTeX Form :')
         self.Search_result = QListWidget()
         self.LaTex_result = QTextEdit()
+        self.CopyButton = QPushButton('Copy')
 
         self.LaTex_result.setReadOnly(True)
+        Search_items = QVBoxLayout()
+        Search_items.addWidget(self.search_phrase)
+        Search_items.addWidget(self.Search_result)
+        TeXCopy = QVBoxLayout()
+        TeXCopy.addWidget(self.latex_phrase)
+        TeXCopy.addWidget(self.LaTex_result)
+        TeXCopy.addWidget(self.CopyButton)
         text = QHBoxLayout()
-        text.addWidget(self.Search_result)
-        text.addWidget(self.LaTex_result)
+        text.addLayout(Search_items)
+        text.addLayout(TeXCopy)
 
         self.Search_result.itemDoubleClicked.connect(lambda item : self.OpenPDF(item))
 
         return text
+
+
 
     def get_KeyWord(self):
         """
@@ -119,6 +157,8 @@ class MainWindow(QMainWindow):
 
         return KeyWord.split(' ')
 
+
+
     def Search(self):
         FileName = self.FileName.text() #get FileName from FileName in TextEntrance
         Author = self.Author.text()     #get Authors from Author in TextEntrance
@@ -129,6 +169,8 @@ class MainWindow(QMainWindow):
         except:
             return QMessageBox.information(self, 'Message', 'Cannot find such papers')
 
+
+
     def Registration(self):
         FileName = self.FileName.text()
         URL = self.URL.text()
@@ -137,12 +179,23 @@ class MainWindow(QMainWindow):
         except:
             return QMessageBox.information(self, 'Message', 'Cannot Regist journal info')
 
+
+
+    def AutoRegistration(self):
+        #TODO : Find papers have not been registered yet
+        
+        #TODO : Regisit these papers
+        return None
+
+
     def LaTeX(self):
         FileName = self.FileName.text()
         try:
             self.LaTex_result.setText(LaTeX.LaTeX().ToLaTeX(FileName))
         except:
             return QMessageBox.information(self, 'Message', 'Cannot create TeX format')
+
+
 
     def SetResult(self, FileName, Author, KeyWords):
         """
@@ -159,9 +212,17 @@ class MainWindow(QMainWindow):
         else:
             raise AssertionError
 
+
+
     def OpenPDF(self, item):
         pdf_path = DataBase.PDFPath().SearchDB(item)
         os.popen(pdf_path)
+
+
+
+    def copy_tex(self):
+        self.CopyButton.selectAll()
+        self.CopyButton.copy()
 
 
 
@@ -195,7 +256,6 @@ class SetPath(QWidget):
         Buttons.addWidget(self.DeletePath)
 
         self.OKButton.clicked.connect(self.RegistPath)
-        self.OKButton.clicked.connect(self.close)
         self.CancelButton.clicked.connect(self.close)
         self.DeletePath.clicked.connect(self.Delete)
 
@@ -219,19 +279,22 @@ class SetPath(QWidget):
     def RegistPath(self):
         path = self.PathSpace.text()
         if path == '': return QMessageBox.critical(self, 'ERROR', 'File Path is empty!')
-        #TODO : When press 'OK' in MessageBox the path setting window also closed. Fix it!
 
         file = DataBase.FilePath()
         file.add_path(path)
         file.close()
+        self.PathList.clear()
+        self.showPath()
 
 
 
     def Delete(self):
         file = DataBase.FilePath()
-        file.clear()
+        file.clear(self.PathList.currentItem().text())
         file.close()
-        QMessageBox.information(self, 'Message', 'Deleted All Path from Data Base')
+        self.PathList.clear()
+        self.showPath()
+        QMessageBox.information(self, 'Message', 'Deleted Path from Data Base')
 
 
 

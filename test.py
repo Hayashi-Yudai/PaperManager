@@ -1,19 +1,10 @@
 if __name__ == '__main__':
-    import sqlite3 as sq
+    import DataBase
 
-    DB = sq.connect('FilePath.db')
-    c = DB.cursor()
-    # try:
-    #     c.execute("create table Path(path);")
-    # except: pass
-    #
-    # c.execute("insert into Path values(?);", ["C//Users/yudai/Dropbox"])
-    # DB.commit()
-    # DB.close()
-
-    c.execute("select * from FilePath")
-    for row in c:    # import os
-
-        print(row[0])
-    #
-    # os.popen('C://Users/yudai/Desktop/1310.0255.pdf')
+    test = DataBase.PaperDataBase()
+    # test.c.execute("insert into Journal values('test','test','test','test','test','test','test','test')")
+    # test.db.commit()
+    test.c.execute("delete from Journal")
+    test.db.commit()
+    for row in test.c.execute('select * from Journal'):
+        print(row)

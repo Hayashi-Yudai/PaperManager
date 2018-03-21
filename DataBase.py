@@ -3,9 +3,12 @@ import sqlite3 as sq
 
 
 class PaperDataBase:
+
     def __init__(self):
         self.db, self.c = self.__set_DB()
         self.__set_Table()
+
+
 
     def __set_DB(self):
         db = sq.connect('JData.db')
@@ -13,11 +16,14 @@ class PaperDataBase:
 
         return db, c
 
+
+
     def __set_Table(self):
         try:
             self.c.execute("create table Journal(FileName, URL, Title, Authors, Year, JName, Vol, Abst);")
         except sq.OperationalError:
             pass
+
 
 
     def SearchDB(self, FileName, Author, KeyWords):
@@ -34,6 +40,8 @@ class PaperDataBase:
 
         return []
 
+
+
     def RegistDB(self, FileName, URL):
         """
         Regist (FileName, URL, Title, AuthorsName, Year, JournalName, Vol., Abstract) to DataBase
@@ -45,6 +53,51 @@ class PaperDataBase:
         #TODO : If URL = '', analyze PDF file and get URL -> if cannot, raise AassertionError
         #TODO : Scrape the HP and get neccesary info -> if cannnot, raise AssertionError
         raise AssertionError
+
+
+
+    def paper_list(self, path):
+        """
+        :param path: path to paper folder
+        :return: list of papers
+        """
+        result = []
+        for dir in os.listdir(path):
+            if os.path.isdir(path + "/" + dir):
+                result.extend(self.paper_list(path + "/" + dir))
+            elif "pdf" in dir:
+                result.append((path +  '\\' + dir).replace('\\', '/'))
+
+        return result
+
+
+
+    def NotRregistrated(self, path):
+        """
+        Find PDF file not registrated in the PDF_path
+        :return: List
+        """
+        # path = FilePath().get_path()
+        registered = []
+        self.c.execute('select * from Journal')
+        for row in self.c:
+            registered.append(row[0])
+
+        return list(set(self.paper_list(path)) - set(registered))
+
+
+
+    def DeletedAlready(self, path):
+        """
+        Find PDF files deleted already from directory but still registered in the PDF_path.
+        :return: List
+        """
+        registered = []
+        self.c.execute('select * from Journal')
+        for row in self.c:
+            registered.append(row[1])
+
+        return list(set(registered) - set(self.paper_list(path)))
 
 
 
@@ -108,8 +161,9 @@ class FilePath:
 
 
 
-    def clear(self):
-        self.c.execute("delete from FilePath;")
+    def clear(self, item):
+        item = "'" + item + "'"
+        self.c.execute("delete from FilePath where path=" + item)
         self.db.commit()
 
 
@@ -158,45 +212,5 @@ class PDFPath:
 
 
 
-    def RegistEB(self, FileName, Path):
+    def RegistDB(self, FileName, Path):
         self.c.execute('insert into PDF_path values(?, ?)', (FileName, Path))
-
-
-
-    def paper_list(self, path):
-        """
-        :param path: path to paper folder
-        :return: list of papers
-        """
-        os.chdir(path)
-        result = []
-        for dir in os.listdir():
-            if os.path.isdir(path + "/" + dir):
-                result.extend(self.paper_list(path + "/" + dir))
-            elif "pdf" in dir:
-                result.append((path +  '\\' + dir).replace('\\', '/'))
-
-        return result
-
-
-
-    def NotRregistrated(self):
-        """
-        Find PDF file not registrated in the PDF_path
-        :return: List
-        """
-        path = FilePath().get_path()
-        registered = []
-        self.c.execute('select * from PDF_path')
-        for row in self.c:
-            registered.append(row[1])
-
-        return list(set(self.paper_list(path)) - set(registered))
-
-
-
-    def DeletedAlready(self):
-        """
-        Find PDF files deleted already from directory but still registered in the PDF_path.
-        :return: List
-        """
