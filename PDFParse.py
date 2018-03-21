@@ -67,12 +67,31 @@ class PhysRev(PDFAnalyze):
 
 
 class Nature(PDFAnalyze):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, path):
+        super().__init__(path)
 
 
 
-    def get_URL(self, path):
+    def get_URL(self):
+        layout = self.get_PDFLayout(0)
+        for l in layout:
+            if isinstance(l, LTTextBoxHorizontal):
+                JournalInfo = re.search(r'DOI: \d+.\d+/\w+\d+', l.get_text())
+                if JournalInfo:
+                    if 'NMAT' in JournalInfo.group():
+                        return 'https://www.nature.com/articles/' + JournalInfo.group()[13:].lower()
+                    elif 'ncomms' in JournalInfo.group():
+                        return 'https://www.nature.com/articles/' + JournalInfo.group()[13:]
+                    elif 'NPHYS' in JournalInfo.group():
+                        return 'https://www.nature.com/articles/' + JournalInfo.group()[13:].lower()
+
+                N_else = re.search(r'DOI: \d+.\d+/\w+.\d+.\d+', l.get_text())
+                if N_else:
+                    if 'NNANO' in N_else.group():
+                        return 'https://www.nature.com/articles/' + N_else.group()[13:].lower()
+                    elif 'NPHOTON' in N_else.group():
+                        return 'https://www.nature.com/articles/' + N_else.group()[13:].lower()
+
         return -1
 
 
@@ -80,12 +99,19 @@ class Nature(PDFAnalyze):
 
 
 class JPSJ(PDFAnalyze):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, path):
+        super().__init__(path)
 
 
 
-    def get_URL(self, path):
+    def get_URL(self):
+        layout = self.get_PDFLayout(0)
+        for l in layout:
+            if isinstance(l, LTTextBoxHorizontal):
+                JournalInfo = re.search(r'DOI: \d+.\d+/\w+.\d+.\d+', l.get_text())
+                if JournalInfo:
+                    return 'http://journals.jps.jp/doi/abs/' + JournalInfo.group()[5:]
+
         return -1
 
 
