@@ -1,10 +1,5 @@
 if __name__ == '__main__':
-    import DataBase
+    import PDFParse
 
-    test = DataBase.PaperDataBase()
-    # test.c.execute("insert into Journal values('test','test','test','test','test','test','test','test')")
-    # test.db.commit()
-    test.c.execute("delete from Journal")
-    test.db.commit()
-    for row in test.c.execute('select * from Journal'):
-        print(row)
+    a = PDFParse.PhysRev('C:/Users/yudai/Dropbox/takahashi_lab/paper/AHE/PhysRevB.79.100404.pdf')
+    print(a.get_URL())

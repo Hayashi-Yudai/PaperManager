@@ -36,13 +36,27 @@ class PaperDataBase:
         :param FileName: File name of .pdf
         :param Author: Authors' name or empty
         :param KeyWords: Key words' list
-        :return: String list shows absolute path to the .pdf file. We will also use this result to open PDF file
+        :return: String list shows FileName. We will also use this result to open PDF file
         """
-        #TODO : Make conditional expression 'Where (cond1) and (cond2) and ...'
-        #TODO : Search with that expression 'select * from Journal (conditional expression)'
-        #TODO : Append serch result in a List and return it
+        result = []
 
-        return []
+        if FileName != '':
+            self.c.execute("select * from Journal FileName=" + "'" + FileName + "'")
+            for row in self.c:
+                result.append(row[0])
+            return result
+
+        condition = "Author like " +"'%" + Author + "%'"
+        if KeyWords != "":
+            KeyWords = KeyWords.split(' ')
+            for i in range(len(KeyWords)):
+                condition += " and Abstract like " + "'%" + KeyWords[i] + "%'"
+
+        self.c.execute("select * from Journal where " + condition)
+        for row in self.c:
+            result.append(row[0])
+
+        return result
 
 
 
@@ -62,7 +76,7 @@ class PaperDataBase:
 
         if URL == '':
             PDF_Directory = PDFPath().SearchDB(FileName)
-            URL = PDFParse.PDFAnalyze().get_URL(PDF_Directory)
+            URL = PDFParse.URL(PDF_Directory).get_URL()
         if URL == -1:
             raise AssertionError
 

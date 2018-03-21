@@ -208,7 +208,7 @@ class MainWindow(QMainWindow):
         self.Search_result.clear()
         if research_result != []:
             for item in research_result:
-                self.Search_result.addItem(item)
+                self.Search_result.addItem(item)     #show only FileName
         else:
             raise AssertionError
 
