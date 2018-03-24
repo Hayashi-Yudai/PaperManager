@@ -176,9 +176,9 @@ class MainWindow(QMainWindow):
         URL = self.URL.text()
         try:
             DataBase.PaperDataBase().RegistDB(FileName, URL)
-            return QMessageBox.information(self, 'Registed journal correctly')
+            return QMessageBox.information(self, 'Message', 'Registered journal correctly')
         except:
-            return QMessageBox.information(self, 'Message', 'Cannot Regist journal info')
+            return QMessageBox.information(self, 'Message', 'Cannot Register journal info')
 
 
 
@@ -188,6 +188,7 @@ class MainWindow(QMainWindow):
         #TODO : Find papers have not been registered yet
         #TODO : Regisit these papers
         return None
+
 
 
     def LaTeX(self):

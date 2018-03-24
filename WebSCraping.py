@@ -145,9 +145,11 @@ class PhysRev(Scraper):
 
     def get_Abst(self):
         section = self.soup.find('section', {'class': 'article open abstract'})
-        content = section.find('div', {'class' : 'content'})
+        content = section.find('div', {'class' : 'content'}).get_text()
 
-        return content.get_text()
+        start = re.search(r'Received', content).start()
+
+        return content[:start]
 
 
 
