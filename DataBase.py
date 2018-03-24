@@ -80,7 +80,7 @@ class PaperDataBase:
         if URL == -1:
             raise AssertionError
 
-        Scrape = WebSCraping.Scraper(URL)
+        Scrape = WebSCraping.SortJournal(URL)
 
         Title = Scrape.get_title()
         AuthorName = Scrape.get_authors()
@@ -92,7 +92,7 @@ class PaperDataBase:
         if Title == -1 or AuthorName == -1 or Year == -1 or JournalName == -1 or Vol == -1 or Abstract == -1:
             raise AssertionError
 
-        self.c.execute('insert into Journal values(?,?,?,?,?,?,?,?,?)', (FileName, URL, Title, AuthorName, Year,
+        self.c.execute('insert into Journal values(?,?,?,?,?,?,?,?)', (FileName, URL, Title, AuthorName, Year,
                                                                          JournalName, Vol, Abstract))
         self.db.commit()
 

@@ -176,8 +176,11 @@ class MainWindow(QMainWindow):
         URL = self.URL.text()
         try:
             DataBase.PaperDataBase().RegistDB(FileName, URL)
+            return QMessageBox.information(self, 'Registed journal correctly')
         except:
             return QMessageBox.information(self, 'Message', 'Cannot Regist journal info')
+
+
 
 
 
