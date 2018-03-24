@@ -27,7 +27,7 @@ if __name__ == '__main__':
     c = db.cursor()
     # c.execute('delete from Journal')
     # db.commit()
-    c.execute("select * from Journal")
+    c.execute("select * from Journal where Abst like '%magnon%' and Abst like '%skyrmion%'")
 
     for row in c:
         print(row)

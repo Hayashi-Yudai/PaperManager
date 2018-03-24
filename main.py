@@ -221,7 +221,7 @@ class MainWindow(QMainWindow):
 
 
     def OpenPDF(self, item):
-        pdf_path = DataBase.PDFPath().SearchDB(item)
+        pdf_path = DataBase.PDFPath().SearchDB(item.text())
         os.popen(pdf_path)
 
 

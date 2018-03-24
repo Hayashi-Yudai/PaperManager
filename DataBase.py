@@ -46,11 +46,17 @@ class PaperDataBase:
                 result.append(row[0])
             return result
 
-        condition = "Author like " +"'%" + Author + "%'"
-        if KeyWords != "":
-            KeyWords = KeyWords.split(' ')
+        if Author != "":
+            condition = "Author like " +"'%" + Author + "%'"
+        else:
+            condition = ""
+
+        if KeyWords != []:
             for i in range(len(KeyWords)):
-                condition += " and Abstract like " + "'%" + KeyWords[i] + "%'"
+                if i == 0:
+                    condition += "Abst like " + "'%" + KeyWords[i] + "%'"
+                else:
+                    condition += " and Abst like " + "'%" + KeyWords[i] + "%'"
 
         self.c.execute("select * from Journal where " + condition)
         for row in self.c:
