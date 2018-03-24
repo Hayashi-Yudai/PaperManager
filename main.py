@@ -58,13 +58,17 @@ class MainWindow(QMainWindow):
 
         pathAction = QAction('Path', self)
         pathAction.triggered.connect(self.SetFilePath)
+        SetPDFPath = QAction('Set PDF Path', self)
+        SetPDFPath.triggered.connect(self.RegisterPDFPath)
 
         menubar = self.menuBar()
         fileMenu = menubar.addMenu('&File')
         pathmenu = menubar.addMenu('&Setting')
+
         fileMenu.addAction(exitAction)
         fileMenu.addAction(registerAction)
         pathmenu.addAction(pathAction)
+        pathmenu.addAction(SetPDFPath)
 
         self.setGeometry(300, 100, 600, 400)
         self.setWindowTitle('PaperResearcher')
@@ -182,8 +186,6 @@ class MainWindow(QMainWindow):
 
 
 
-
-
     def AutoRegistration(self):
         #TODO : Find papers have not been registered yet
         #TODO : Regisit these papers
@@ -227,6 +229,21 @@ class MainWindow(QMainWindow):
     def copy_tex(self):
         self.CopyButton.selectAll()
         self.CopyButton.copy()
+
+    def RegisterPDFPath(self):
+        paths  = DataBase.FilePath().get_path()
+        pdf  = DataBase.PDFPath()
+        try:
+            pdf.clear()
+        except:
+            pass
+        papers = DataBase.PaperDataBase()
+        for path in paths:
+            paper_list = papers.paper_list(path)
+            for item in paper_list:
+                pdf.RegistDB(item.split('/')[-1], item)
+
+        return None
 
 
 

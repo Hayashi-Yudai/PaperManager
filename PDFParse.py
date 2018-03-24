@@ -42,15 +42,14 @@ class PDFAnalyze:
 
 
 
-
 class PhysRev(PDFAnalyze):
     def __init__(self, path):
         super().__init__(path)
 
 
 
-    def get_URL(self):
-        layout = self.get_PDFLayout(0)
+    def get_URL(self, layout):
+
         for l in layout:
             if isinstance(l, LTTextBoxHorizontal):
                 JournalInfo = re.search(r'DOI: \d+.\d+/\w+.\d+.\d+', l.get_text())
@@ -151,6 +150,23 @@ class URL:
 
 
     def DecideJournal(self):
+        """
+        Judge from which journal the paper is published. First this function search first page,
+        next search last page, because in 'Science' the journal info is in the last page
+        :return: String
+        """
+        layout = PDFAnalyze(self.path).get_PDFLayout(0)
+        for l in layout:
+            if isinstance(l, LTTextBoxHorizontal):
+                if 'PhysRevLett' in l.get_text():
+                    return 'PRL', layout
+                if 'PhysRevB' in l.get_text():
+                    return 'PRB', layout
+                if 'RevModPhys' in l.get_text():
+                    return 'RMP', layout
+
+        #TODO : search last page
+
         return -1
 
 
@@ -159,4 +175,8 @@ class URL:
         Judge what is the journal name and get URL of the paper
         :return: URL of the paper.
         """
+        J, layout = self.DecideJournal()
+        if J == "PRB" or J == "PRL" or J == "RMP":
+            return PhysRev(self.path).get_URL(layout)
+
         return -1

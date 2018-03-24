@@ -148,6 +148,11 @@ class PaperDataBase:
 
 
 class FilePath:
+    """
+    Deta base to store the paths to paper folder.
+    DataBase name : FilePath.db
+    Table name : FilePath
+    """
 
     def __init__(self):
         self.db, self.c = self.__set_DB()
@@ -221,18 +226,22 @@ class FilePath:
 
 
 class PDFPath:
-
+    """
+    Data base to store paths to all paper in paper folders.
+    DataBase name : PDFPath.db
+    table name : PDF_path
+    """
     def __init__(self):
-        self.DB, self.c = self.__set_DB()
+        self.db, self.c = self.__set_DB()
         self.__set_Table()
 
 
 
     def __set_DB(self):
-        DB = sq.connect('PDFPath.db')
-        c = DB.cursor()
+        db = sq.connect('PDFPath.db')
+        c = db.cursor()
 
-        return DB, c
+        return db, c
 
 
 
@@ -250,7 +259,8 @@ class PDFPath:
         :param FileName: PDF File Name
         :return: Absolute Path to the FileName
         """
-        self.c.execute('search * from PDF_path where FileName=' + FileName)
+        FileName += ".pdf"
+        self.c.execute("select * from PDF_path where FileName=" + "'" + FileName +"'")
         for row in self.c:
             return row[1]
 
@@ -258,3 +268,7 @@ class PDFPath:
 
     def RegistDB(self, FileName, Path):
         self.c.execute('insert into PDF_path values(?, ?)', (FileName, Path))
+        self.db.commit()
+
+    def clear(self):
+        self.c.execute('delete from PDF_path')
