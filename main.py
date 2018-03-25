@@ -126,22 +126,23 @@ class MainWindow(QMainWindow):
         self.search_phrase = QLabel('Search Result :')
         self.latex_phrase = QLabel('LaTeX Form :')
         self.Search_result = QListWidget()
-        self.LaTex_result = QTextEdit()
+        self.LateX_result = QTextEdit()
         self.CopyButton = QPushButton('Copy')
 
-        self.LaTex_result.setReadOnly(True)
+        self.LateX_result.setReadOnly(True)
         Search_items = QVBoxLayout()
         Search_items.addWidget(self.search_phrase)
         Search_items.addWidget(self.Search_result)
         TeXCopy = QVBoxLayout()
         TeXCopy.addWidget(self.latex_phrase)
-        TeXCopy.addWidget(self.LaTex_result)
+        TeXCopy.addWidget(self.LateX_result)
         TeXCopy.addWidget(self.CopyButton)
         text = QHBoxLayout()
         text.addLayout(Search_items)
         text.addLayout(TeXCopy)
 
         self.Search_result.itemDoubleClicked.connect(lambda item : self.OpenPDF(item))
+        self.CopyButton.clicked.connect(self.copy_tex)
 
         return text
 
@@ -196,7 +197,7 @@ class MainWindow(QMainWindow):
     def LaTeX(self):
         FileName = self.FileName.text()
         try:
-            self.LaTex_result.setText(LaTeX.LaTeX().ToLaTeX(FileName))
+            self.LateX_result.setText(LaTeX.LaTeX().ToLaTeX(FileName))
         except:
             return QMessageBox.information(self, 'Message', 'Cannot create TeX format')
 
@@ -227,8 +228,12 @@ class MainWindow(QMainWindow):
 
 
     def copy_tex(self):
-        self.CopyButton.selectAll()
-        self.CopyButton.copy()
+        self.LateX_result.selectAll()
+        self.LateX_result.copy()
+
+        return None
+
+
 
     def RegisterPDFPath(self):
         paths  = DataBase.FilePath().get_path()

@@ -2,16 +2,21 @@ if __name__ == '__main__':
     import WebSCraping
     import PDFParse
     import DataBase
+    import LaTeX
     import sqlite3
     from pdfminer.layout import LTTextBoxHorizontal
+
+    # a = LaTeX.LaTeX()
+    # print(a.ToLaTeX('PhysRevLett.97.126602'))
 
     # layout = PDFParse.PDFAnalyze("C://Users/yudai/Dropbox/takahashi_lab/paper/Cu2OSeO3/PhysRevLett.109.037603.pdf").get_PDFLayout(0)
     # for l in layout:
     #     if isinstance(l, LTTextBoxHorizontal) and 'PhysRevLett' in l.get_text():
     #         print(l.get_text())
 
-    # soup = WebSCraping.PhysRev('https://journals.aps.org/prb/abstract/10.1103/PhysRevB.95.174407').get_Abst()
-    # print(soup)
+    # soup = WebSCraping.PhysRev('https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.82.1539').soup
+    # find = soup.find('section', {'class': 'article open abstract'})
+    # print(find.get_text())
     # abstract  = soup.find('section', {'class' : 'article open abstract'})
     #
     # print(abstract.find('div', {'class' : 'content'}).get_text())
@@ -27,7 +32,7 @@ if __name__ == '__main__':
     c = db.cursor()
     # c.execute('delete from Journal')
     # db.commit()
-    c.execute("select * from Journal where Abst like '%magnon%' and Abst like '%skyrmion%'")
+    c.execute("select * from Journal")
 
     for row in c:
         print(row)
