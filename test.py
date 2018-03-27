@@ -6,6 +6,9 @@ if __name__ == '__main__':
     import sqlite3
     from pdfminer.layout import LTTextBoxHorizontal
 
+
+    nat = WebSCraping.Nature('https://www.nature.com/articles/ncomms3391')
+    print(nat.get_JName())
     # a = LaTeX.LaTeX()
     # print(a.ToLaTeX('PhysRevLett.97.126602'))
 
@@ -14,7 +17,9 @@ if __name__ == '__main__':
     #     if isinstance(l, LTTextBoxHorizontal) and 'PhysRevLett' in l.get_text():
     #         print(l.get_text())
 
-    # soup = WebSCraping.PhysRev('https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.82.1539').soup
+    # soup = WebSCraping.PhysRev('https://www.nature.com/articles/nmat4223').soup
+    # for item in soup.find_all('meta', {'name' : 'dc.creator'}):
+    #     print(item['content'])
     # find = soup.find('section', {'class': 'article open abstract'})
     # print(find.get_text())
     # abstract  = soup.find('section', {'class' : 'article open abstract'})
@@ -28,11 +33,11 @@ if __name__ == '__main__':
     # print(pdf)
 
 
-    db = sqlite3.connect('JData.db')
-    c = db.cursor()
-    # c.execute('delete from Journal')
-    # db.commit()
-    c.execute("select * from Journal")
-
-    for row in c:
-        print(row)
+    # db = sqlite3.connect('JData.db')
+    # c = db.cursor()
+    # # c.execute('delete from Journal')
+    # # db.commit()
+    # c.execute("select * from Journal")
+    #
+    # for row in c:
+    #     print(row)

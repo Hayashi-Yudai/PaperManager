@@ -6,7 +6,7 @@ from pdfminer.converter import PDFPageAggregator
 from pdfminer.layout import LTTextBoxHorizontal
 
 import re
-
+import logging
 
 
 
@@ -19,6 +19,8 @@ class PDFAnalyze:
 
         fp = open(self.path, 'rb')
         try:
+            logging.propagate = False
+            logging.getLogger().setLevel(logging.ERROR)
             parser = PDFParser(fp)
             document = PDFDocument()
             parser.set_document(document)

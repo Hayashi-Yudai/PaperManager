@@ -173,18 +173,40 @@ class Nature(Scraper):
 
 
     def get_authors(self):
-        pass
+        authors = self.soup.find_all('meta', {'name' : 'dc.creator'})
+        result = []
+        for author in authors:
+            result.append(author['content'])
+
+        return result
 
 
 
     def get_year(self):
-        dataLayer = self.soup.find("script", text=re.compile("dataLayer"))
-        return re.search(r'"authors":\[.*"\]', str(dataLayer)).group()[11:-1].replace('"', '').split(',')
+        try:
+            citation = self.soup.find('meta', {'name' : 'citation_online_date'})
+            return citation['content'].split('/')[0]
+        except:
+            return -1
 
 
 
     def get_JName(self):
-        pass
+        if 'ncomms' in self.URL:
+            return 'Nat. Commun.'
+        if 'nmat' in self.URL:
+            return 'Nat. Matter.'
+        if 'nphys' in self.URL:
+            return 'Nat. Phys.'
+        if 'nnano' in self.URL:
+            return 'Nat. Nanotech.'
+        if 'nphoton' in self.URL:
+            return 'Nat. Photon.'
+        if '/nature/' in self.URL:  #every nature journal has "www.nature.com"
+            return 'Nature'
+
+
+        return -1
 
 
 
@@ -310,6 +332,8 @@ class APL(Scraper):
 
     def get_Abst(self):
         pass
+
+
 
 
 
