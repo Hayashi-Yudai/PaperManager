@@ -124,7 +124,6 @@ class PhysRev(Scraper):
 
 
 
-
     def get_JName(self):
         if 'prl' in self.URL:
             return 'Phys. Rev. Lett.'
@@ -211,13 +210,16 @@ class Nature(Scraper):
 
 
     def get_Vol(self):
-        pass
+        vol = self.soup.find('meta', {'name' : 'prism.volume'})['content']
+        page = self.soup.find('meta', {'name' : 'prism.startingPage'})['content']
+
+        return [vol, page]
 
 
 
     def get_Abst(self):
-        pass
-
+        abst = self.soup.find('div', {'id' : 'abstract-content'}).get_text()
+        return abst
 
 
 

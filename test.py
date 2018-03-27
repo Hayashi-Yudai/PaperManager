@@ -7,8 +7,8 @@ if __name__ == '__main__':
     from pdfminer.layout import LTTextBoxHorizontal
 
 
-    nat = WebSCraping.Nature('https://www.nature.com/articles/ncomms3391')
-    print(nat.get_JName())
+    # nat = WebSCraping.Nature('https://www.nature.com/articles/ncomms3391')
+    # print(nat.get_JName())
     # a = LaTeX.LaTeX()
     # print(a.ToLaTeX('PhysRevLett.97.126602'))
 
@@ -17,7 +17,9 @@ if __name__ == '__main__':
     #     if isinstance(l, LTTextBoxHorizontal) and 'PhysRevLett' in l.get_text():
     #         print(l.get_text())
 
-    # soup = WebSCraping.PhysRev('https://www.nature.com/articles/nmat4223').soup
+    soup = WebSCraping.Nature('https://www.nature.com/articles/nmat4223')
+    # print(soup)
+    print(soup.get_Abst())
     # for item in soup.find_all('meta', {'name' : 'dc.creator'}):
     #     print(item['content'])
     # find = soup.find('section', {'class': 'article open abstract'})
