@@ -79,25 +79,26 @@ class Nature(PDFAnalyze):
 
 
 
-    def get_URL(self):
-        layout = self.get_PDFLayout(0)
+    def get_URL(self, layout):
         for l in layout:
             if isinstance(l, LTTextBoxHorizontal):
-                JournalInfo = re.search(r'DOI: \d+.\d+/\w+\d+', l.get_text())
-                if JournalInfo:
-                    if 'NMAT' in JournalInfo.group():
-                        return 'https://www.nature.com/articles/' + JournalInfo.group()[13:].lower()
-                    elif 'ncomms' in JournalInfo.group():
-                        return 'https://www.nature.com/articles/' + JournalInfo.group()[13:]
-                    elif 'NPHYS' in JournalInfo.group():
-                        return 'https://www.nature.com/articles/' + JournalInfo.group()[13:].lower()
+                JournalInfo1 = re.search(r'DOI: \d+.\d+/\w+\d+', l.get_text())
+                JournalInfo2 = re.search(r'DOI: \d+.\d+/\w+.\d+.\d+', l.get_text())
+                JournalInfo3 = re.search(r'doi:\d+.\d+/\w+\d+', l.get_text())
 
-                N_else = re.search(r'DOI: \d+.\d+/\w+.\d+.\d+', l.get_text())
-                if N_else:
-                    if 'NNANO' in N_else.group():
-                        return 'https://www.nature.com/articles/' + N_else.group()[13:].lower()
-                    elif 'NPHOTON' in N_else.group():
-                        return 'https://www.nature.com/articles/' + N_else.group()[13:].lower()
+                if JournalInfo1:
+                    if 'NMAT' in JournalInfo1.group() or 'ncomms' in JournalInfo1.group() or\
+                             'NPHYS' in JournalInfo1.group():
+                        return 'https://www.nature.com/articles/' + JournalInfo1.group()[13:].lower()
+
+                if JournalInfo2:
+                    if 'NNANO' in JournalInfo2.group() or 'NPHOTON' in JournalInfo2.group():
+                        return 'https://www.nature.com/articles/' +JournalInfo2.group()[13:].lower()
+
+                if JournalInfo3:
+                    if 'nature' in JournalInfo3.group():
+                        return 'https://www.nature.com/articles/' +JournalInfo3.group()[12:].lower()
+
 
         return -1
 
@@ -166,7 +167,8 @@ class URL:
                     return 'PRB', layout
                 if 'RevModPhys' in l.get_text():
                     return 'RMP', layout
-
+                if 'nature' in l.get_text():
+                    return 'Nature', layout
         #TODO : search last page
 
         return -1
@@ -180,5 +182,8 @@ class URL:
         J, layout = self.DecideJournal()
         if J == "PRB" or J == "PRL" or J == "RMP":
             return PhysRev(self.path).get_URL(layout)
+
+        if J == 'Nature':
+            return Nature(self.path).get_URL(layout)
 
         return -1

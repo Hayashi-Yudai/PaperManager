@@ -248,7 +248,7 @@ class MainWindow(QMainWindow):
             for item in paper_list:
                 pdf.RegistDB(item.split('/')[-1], item)
 
-        return None
+        return QMassageBox.information(self, 'Message', 'Registered All PDF Paths Correctly')
 
 
 

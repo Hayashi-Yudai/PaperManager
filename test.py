@@ -6,7 +6,8 @@ if __name__ == '__main__':
     import sqlite3
     from pdfminer.layout import LTTextBoxHorizontal
 
-
+    a = PDFParse.Nature('C:/Users/yudai/Dropbox/takahashi_lab/paper/Drude/nat_04232.pdf')
+    print(a.get_URL(a.get_PDFLayout(0)))
     # nat = WebSCraping.Nature('https://www.nature.com/articles/ncomms3391')
     # print(nat.get_JName())
     # a = LaTeX.LaTeX()
@@ -17,9 +18,9 @@ if __name__ == '__main__':
     #     if isinstance(l, LTTextBoxHorizontal) and 'PhysRevLett' in l.get_text():
     #         print(l.get_text())
 
-    soup = WebSCraping.Nature('https://www.nature.com/articles/nmat4223')
-    # print(soup)
-    print(soup.get_Abst())
+    # soup = WebSCraping.Nature('https://www.nature.com/articles/nmat4223')
+    # # print(soup)
+    # print(soup.get_Abst())
     # for item in soup.find_all('meta', {'name' : 'dc.creator'}):
     #     print(item['content'])
     # find = soup.find('section', {'class': 'article open abstract'})
