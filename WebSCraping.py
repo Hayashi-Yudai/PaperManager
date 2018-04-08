@@ -201,7 +201,7 @@ class Nature(Scraper):
             return 'Nat. Nanotech.'
         if 'nphoton' in self.URL:
             return 'Nat. Photon.'
-        if '/nature/' in self.URL:  #every nature journal has "www.nature.com"
+        if '/nature' in self.URL:  #every nature journal has "www.nature.com"
             return 'Nature'
 
 
@@ -220,6 +220,7 @@ class Nature(Scraper):
     def get_Abst(self):
         abst = self.soup.find('div', {'id' : 'abstract-content'}).get_text()
         return abst
+
 
 
 

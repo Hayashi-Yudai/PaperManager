@@ -7,7 +7,10 @@ if __name__ == '__main__':
     from pdfminer.layout import LTTextBoxHorizontal
 
     a = PDFParse.Nature('C:/Users/yudai/Dropbox/takahashi_lab/paper/Drude/nat_04232.pdf')
-    print(a.get_URL(a.get_PDFLayout(0)))
+    URL = a.get_URL(a.get_PDFLayout(0))
+    print(URL)
+    # web = WebSCraping.Nature(URL)
+    # print(web.get_Abst())
     # nat = WebSCraping.Nature('https://www.nature.com/articles/ncomms3391')
     # print(nat.get_JName())
     # a = LaTeX.LaTeX()
