@@ -18,7 +18,7 @@ exe = Executable(script = 'main.py',
                  base = base)
 
 # セットアップ
-setup(name = 'main',
+setup(name = 'PaperManager',
       version = '0.1',
       description = 'converter',
       options = {"build_exe": {"includes":includes,
