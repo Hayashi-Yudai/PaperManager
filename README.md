@@ -24,3 +24,21 @@ This app can
 
 ### Create LaTeX form reference
 * Enter File Name and press "LaTeX" button, and  to use reference press "Copy" button.
+
+## Journals Available
+* Nature
+* Nature Physics
+* Nature Nanotechnologies
+* Nature Materials
+* Nature Communications
+* Physical Review Letters
+* Physical Review B
+* Review of Modern Physics
+
+I'll add in the future...
+* Science
+* Journal of Physical Society of Japan
+...
+
+** Caution **
+This app use DOI to get information from URL, so old papers cannot registered correctly with only File Name
