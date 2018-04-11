@@ -1,4 +1,4 @@
-PaperResearcher
+PaperManager
 ====
 
 Help literature management. You can register some papers and search them. In addition it can create LaTeX form reference.
@@ -40,5 +40,7 @@ I'll add in the future...
 * Journal of Physical Society of Japan
 ...
 
-** Caution **
+**Caution**
+
 This app use DOI to get information from URL, so old papers cannot registered correctly with only File Name
+Auto Registeration function does not work by now

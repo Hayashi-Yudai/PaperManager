@@ -112,13 +112,12 @@ class JPSJ(PDFAnalyze):
 
 
 
-    def get_URL(self):
-        layout = self.get_PDFLayout(0)
+    def get_URL(self, layout):
         for l in layout:
             if isinstance(l, LTTextBoxHorizontal):
-                JournalInfo = re.search(r'DOI: \d+.\d+/\w+.\d+.\d+', l.get_text())
+                JournalInfo = re.search(r'\d+.\d+/JPSJ.\d+.\d+', l.get_text())
                 if JournalInfo:
-                    return 'http://journals.jps.jp/doi/abs/' + JournalInfo.group()[5:]
+                    return 'http://journals.jps.jp/doi/' + JournalInfo.group()
 
         return -1
 
@@ -132,8 +131,7 @@ class APL(PDFAnalyze):
 
 
 
-    def get_URL(self):
-        layout = self.get_PDFLayout(0)
+    def get_URL(self, layout):
         for l in layout:
             if isinstance(l, LTTextBoxHorizontal):
                 JournalInfo = re.search(r'http://dx.doi.org/\d+.\d+/\d+.\d+', l.get_text())
@@ -169,6 +167,8 @@ class URL:
                     return 'RMP', layout
                 if 'nature' in l.get_text():
                     return 'Nature', layout
+                if 'JPSJ' in l.get_text():
+                    return 'JPSJ', layout
         #TODO : search last page
 
         return -1
@@ -185,5 +185,8 @@ class URL:
 
         if J == 'Nature':
             return Nature(self.path).get_URL(layout)
+
+        if J == 'JPSJ':
+            return JPSJ(self.path).get_URL(layout)
 
         return -1
