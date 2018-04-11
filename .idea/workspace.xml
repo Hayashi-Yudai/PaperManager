@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fc7a160b-0acd-4892-ae49-3eabac142c8f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebSCraping.py" beforeDir="false" afterPath="$PROJECT_DIR$/WebSCraping.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,10 +13,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
+            <state relative-caret-position="2970">
               <caret line="234" lean-forward="true" selection-start-line="234" selection-end-line="234" />
               <folding>
                 <element signature="e#334#544#0" expanded="true" />
@@ -52,11 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PDFParse.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PDFParse.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PDFParse.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="117" column="42" selection-start-line="117" selection-start-column="42" selection-end-line="117" selection-end-column="42" />
+            <state relative-caret-position="-2210">
+              <caret line="28" selection-start-line="28" selection-end-line="28" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
                 <element signature="e#2125#3165#0" />
@@ -68,22 +68,18 @@
       <file leaf-file-name="WebSCraping.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebSCraping.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="89" selection-start-line="89" selection-end-line="89" />
+            <state relative-caret-position="256">
+              <caret line="303" column="30" selection-start-line="303" selection-start-column="30" selection-end-line="303" selection-end-column="30" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
-                <element signature="e#122#1770#0" />
-                <element signature="e#1629#1770#0" />
                 <element signature="e#1804#3196#0" />
-                <element signature="e#2022#2336#0" />
                 <element signature="e#2372#2537#0" />
                 <element signature="e#2574#2766#0" />
                 <element signature="e#2801#2866#0" />
                 <element signature="e#2902#3196#0" />
                 <element signature="e#4754#5144#0" />
-                <element signature="e#5175#5507#0" />
+                <element signature="e#5343#5535#0" />
                 <element signature="e#5537#5857#0" />
-                <element signature="e#5891#6162#0" />
               </folding>
             </state>
           </provider>
@@ -92,7 +88,7 @@
       <file leaf-file-name="LaTeX.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LaTeX.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="756">
+            <state relative-caret-position="422">
               <caret line="42" column="40" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
             </state>
           </provider>
@@ -101,8 +97,8 @@
       <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            <state relative-caret-position="72">
+              <caret line="4" column="90" lean-forward="true" selection-start-line="4" selection-start-column="76" selection-end-line="4" selection-end-column="90" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -131,11 +127,17 @@
       <find>LaTex_result</find>
       <find>Garst</find>
       <find>year</find>
-      <find>2015</find>
       <find>14</find>
       <find>478</find>
       <find>prism.star</find>
       <find>Nearly seven</find>
+      <find>Impo</find>
+      <find>Koba</find>
+      <find>Kobayashi</find>
+      <find>2015</find>
+      <find>Vol</find>
+      <find>84</find>
+      <find>The in</find>
     </findStrings>
     <replaceStrings>
       <replace>LateX_result</replace>
@@ -150,12 +152,12 @@
         <option value="$PROJECT_DIR$/DataBase.py" />
         <option value="$PROJECT_DIR$/LaTeX.py" />
         <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/WebSCraping.py" />
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/venv/test.py" />
-        <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/PDFParse.py" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/WebSCraping.py" />
       </list>
     </option>
   </component>
@@ -288,13 +290,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/PDFParse.py</url>
-          <line>181</line>
-          <option name="timeStamp" value="54" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -302,7 +297,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="55" />
+      <option name="time" value="57" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -312,18 +307,14 @@
           <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
-            <element signature="e#122#1770#0" />
-            <element signature="e#1629#1770#0" />
             <element signature="e#1804#3196#0" />
-            <element signature="e#2022#2336#0" />
             <element signature="e#2372#2537#0" />
             <element signature="e#2574#2766#0" />
             <element signature="e#2801#2866#0" />
             <element signature="e#2902#3196#0" />
             <element signature="e#4754#5144#0" />
-            <element signature="e#5175#5507#0" />
+            <element signature="e#5343#5535#0" />
             <element signature="e#5537#5857#0" />
-            <element signature="e#5891#6162#0" />
           </folding>
         </state>
       </provider>
@@ -388,18 +379,14 @@
           <caret line="68" column="12" selection-start-line="68" selection-start-column="12" selection-end-line="68" selection-end-column="12" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
-            <element signature="e#122#1770#0" />
-            <element signature="e#1629#1770#0" />
             <element signature="e#1804#3196#0" />
-            <element signature="e#2022#2336#0" />
             <element signature="e#2372#2537#0" />
             <element signature="e#2574#2766#0" />
             <element signature="e#2801#2866#0" />
             <element signature="e#2902#3196#0" />
             <element signature="e#4754#5144#0" />
-            <element signature="e#5175#5507#0" />
+            <element signature="e#5343#5535#0" />
             <element signature="e#5537#5857#0" />
-            <element signature="e#5891#6162#0" />
           </folding>
         </state>
       </provider>
@@ -464,18 +451,14 @@
           <caret line="33" selection-start-line="33" selection-end-line="33" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
-            <element signature="e#122#1770#0" />
-            <element signature="e#1629#1770#0" />
             <element signature="e#1804#3196#0" />
-            <element signature="e#2022#2336#0" />
             <element signature="e#2372#2537#0" />
             <element signature="e#2574#2766#0" />
             <element signature="e#2801#2866#0" />
             <element signature="e#2902#3196#0" />
             <element signature="e#4754#5144#0" />
-            <element signature="e#5175#5507#0" />
+            <element signature="e#5343#5535#0" />
             <element signature="e#5537#5857#0" />
-            <element signature="e#5891#6162#0" />
           </folding>
         </state>
       </provider>
@@ -540,18 +523,14 @@
           <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
-            <element signature="e#122#1770#0" />
-            <element signature="e#1629#1770#0" />
             <element signature="e#1804#3196#0" />
-            <element signature="e#2022#2336#0" />
             <element signature="e#2372#2537#0" />
             <element signature="e#2574#2766#0" />
             <element signature="e#2801#2866#0" />
             <element signature="e#2902#3196#0" />
             <element signature="e#4754#5144#0" />
-            <element signature="e#5175#5507#0" />
+            <element signature="e#5343#5535#0" />
             <element signature="e#5537#5857#0" />
-            <element signature="e#5891#6162#0" />
           </folding>
         </state>
       </provider>
@@ -793,13 +772,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LaTeX.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="42" column="40" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -821,32 +793,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="45" column="48" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LaTeX.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="42" column="40" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PDFParse.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2210">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+            <element signature="e#2125#3165#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WebSCraping.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="89" selection-start-line="89" selection-end-line="89" />
+        <state relative-caret-position="256">
+          <caret line="303" column="30" selection-start-line="303" selection-start-column="30" selection-end-line="303" selection-end-column="30" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
-            <element signature="e#122#1770#0" />
-            <element signature="e#1629#1770#0" />
             <element signature="e#1804#3196#0" />
-            <element signature="e#2022#2336#0" />
             <element signature="e#2372#2537#0" />
             <element signature="e#2574#2766#0" />
             <element signature="e#2801#2866#0" />
             <element signature="e#2902#3196#0" />
             <element signature="e#4754#5144#0" />
-            <element signature="e#5175#5507#0" />
+            <element signature="e#5343#5535#0" />
             <element signature="e#5537#5857#0" />
-            <element signature="e#5891#6162#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        <state relative-caret-position="72">
+          <caret line="4" column="90" lean-forward="true" selection-start-line="4" selection-start-column="76" selection-end-line="4" selection-end-column="90" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
@@ -855,7 +848,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
+        <state relative-caret-position="2970">
           <caret line="234" lean-forward="true" selection-start-line="234" selection-end-line="234" />
           <folding>
             <element signature="e#334#544#0" expanded="true" />
@@ -870,24 +863,6 @@
             <element signature="e#7093#7176#0" />
             <element signature="e#7219#7667#0" />
             <element signature="e#7702#9673#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="45" column="48" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PDFParse.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="117" column="42" selection-start-line="117" selection-start-column="42" selection-end-line="117" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-            <element signature="e#2125#3165#0" />
           </folding>
         </state>
       </provider>

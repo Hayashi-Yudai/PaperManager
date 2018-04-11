@@ -27,7 +27,7 @@ class Scraper:
 
 
 
-    def get_title(self):
+    def get_title(self) -> str:
         """
         Title of the paper. If cannot find, return -1
         :return: String
@@ -43,7 +43,7 @@ class Scraper:
 
 
 
-    def get_authors(self):
+    def get_authors(self) -> list:
         """
         Full name of authors
         :return: List of String
@@ -52,14 +52,11 @@ class Scraper:
 
 
 
-    def get_year(self):
-        """
-        :return: String
-        """
+    def get_year(self) -> str:
         pass
 
 
-    def get_JName(self):
+    def get_JName(self) -> str:
         """
         Return abbrebiated name used in reference. For example,
             Physical Review B -> Phys. Rev. B
@@ -70,7 +67,7 @@ class Scraper:
 
 
 
-    def get_Vol(self):
+    def get_Vol(self) -> list:
         """
         Volume and page
         :return: List of String.
@@ -79,10 +76,9 @@ class Scraper:
 
 
 
-    def get_Abst(self):
+    def get_Abst(self) -> str:
         """
         If I can, return LaTeX form abstract and compile with Tex compiler (Future Plan)
-        :return: String
         """
         pass
 
@@ -276,27 +272,38 @@ class JPSJ(Scraper):
 
 
     def get_authors(self):
-        pass
+        result = []
+        authors = self.soup.find_all('meta', {'name' : 'dc.Creator'})
+        for author in authors:
+            result.append(author.get('content'))
+
+        return result
 
 
 
     def get_year(self):
-        pass
+        date = self.soup.find('meta', {'name' : 'dc.Date'})
+
+        return date.get('content')[:4]
 
 
 
     def get_JName(self):
-        pass
+        return 'J. Phys. Soc. Jpn.'
 
 
 
     def get_Vol(self):
-        pass
+        Vol = self.soup.find('meta', {'scheme' : 'doi'})
+
+        return Vol.get('content').split('.')[-2:]
 
 
 
     def get_Abst(self):
-        pass
+        Abst = self.soup.find('meta', {'name' : 'dc.Description'})
+
+        return Abst.get('content')
 
 
 
