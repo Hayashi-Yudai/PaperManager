@@ -1,0 +1,3 @@
+#do not save database file
+*.db
+test.py
