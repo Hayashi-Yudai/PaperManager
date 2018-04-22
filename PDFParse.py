@@ -54,7 +54,7 @@ class PhysRev(PDFAnalyze):
 
         for l in layout:
             if isinstance(l, LTTextBoxHorizontal):
-                JournalInfo = re.search(r'DOI: \d+.\d+/\w+.\d+.\d+', l.get_text())
+                JournalInfo = re.search(r'DOI: \d+\.\d+/\w+\.\d+\.\d+', l.get_text())
 
                 if JournalInfo:
                     if 'PhysRevLett' in JournalInfo.group():
@@ -82,9 +82,9 @@ class Nature(PDFAnalyze):
     def get_URL(self, layout):
         for l in layout:
             if isinstance(l, LTTextBoxHorizontal):
-                JournalInfo1 = re.search(r'DOI: \d+.\d+/\w+\d+', l.get_text())
-                JournalInfo2 = re.search(r'DOI: \d+.\d+/\w+.\d+.\d+', l.get_text())
-                JournalInfo3 = re.search(r'doi:\d+.\d+/\w+\d+', l.get_text())
+                JournalInfo1 = re.search(r'DOI: \d+\.\d+/\w+\d+', l.get_text())
+                JournalInfo2 = re.search(r'DOI: \d+\.\d+/\w+\.\d+.\d+', l.get_text())
+                JournalInfo3 = re.search(r'doi:\d+\.\d+/\w+\d+', l.get_text())
 
                 if JournalInfo1:
                     if 'NMAT' in JournalInfo1.group() or 'ncomms' in JournalInfo1.group() or\
@@ -115,7 +115,7 @@ class JPSJ(PDFAnalyze):
     def get_URL(self, layout):
         for l in layout:
             if isinstance(l, LTTextBoxHorizontal):
-                JournalInfo = re.search(r'\d+.\d+/JPSJ.\d+.\d+', l.get_text())
+                JournalInfo = re.search(r'\d+\.\d+/JPSJ\.\d+\.\d+', l.get_text())
                 if JournalInfo:
                     return 'http://journals.jps.jp/doi/' + JournalInfo.group()
 
@@ -134,7 +134,7 @@ class APL(PDFAnalyze):
     def get_URL(self, layout):
         for l in layout:
             if isinstance(l, LTTextBoxHorizontal):
-                JournalInfo = re.search(r'http://dx.doi.org/\d+.\d+/\d+.\d+', l.get_text())
+                JournalInfo = re.search(r'http://dx.doi.org/\d+\.\d+/\d+\.\d+', l.get_text())
                 if JournalInfo:
                     return JournalInfo.group()
 

@@ -19,8 +19,8 @@ exe = Executable(script = 'main.py',
 
 # セットアップ
 setup(name = 'PaperManager',
-      version = '0.1',
-      description = 'converter',
+      version = '0.2',
+      description = 'Help you manage journal papers',
       options = {"build_exe": {"includes":includes,
                                "excludes":excludes, "packages":packages}},
       executables = [exe])
