@@ -47,11 +47,11 @@ class PaperDataBase:
             return result
 
         if Author != "":
-            condition = "Author like " +"'%" + Author + "%'"
+            condition = "Authors like " +"'%" + Author + "%'"
         else:
             condition = ""
 
-        if KeyWords != []:
+        if KeyWords != ['']:
             for i in range(len(KeyWords)):
                 if i == 0:
                     condition += "Abst like " + "'%" + KeyWords[i] + "%'"
