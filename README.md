@@ -10,6 +10,11 @@ This app can
 * Open PDF file you found by searching
 * Create LaTeX form reference
 
+## Dependence
+* PyQt5
+* PDFMiner
+* BeautifulSoup
+
 ## Usage
 * If you use this app first time, a pop up window will appear. You can register paths to your paper folder.
 * From the Setting tab, press "Set PDF Path" to add all papers to database.
@@ -34,10 +39,10 @@ This app can
 * Physical Review Letters
 * Physical Review B
 * Review of Modern Physics
+* Journal of Physical Society of Japan
 
 I'll add in the future...
 * Science
-* Journal of Physical Society of Japan
 ...
 
 **Caution**
