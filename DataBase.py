@@ -41,7 +41,7 @@ class PaperDataBase:
         result = []
 
         if FileName != '':
-            self.c.execute("select * from Journal where FileName=" + "'" + FileName + "'")
+            self.c.execute("select * from Journal where FileName like " + "'%" + FileName + "%'")
             for row in self.c:
                 result.append(row[0])
             return result
