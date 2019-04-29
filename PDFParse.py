@@ -1,5 +1,5 @@
 from pdfminer.pdfparser import PDFParser
-from pdfminer.pdfparser import PDFDocument
+from pdfminer.pdfdocument import PDFDocument
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.layout import LAParams
 from pdfminer.converter import PDFPageAggregator
@@ -7,7 +7,6 @@ from pdfminer.layout import LTTextBoxHorizontal
 
 import re
 import logging
-
 
 
 class PDFAnalyze:
@@ -34,27 +33,23 @@ class PDFAnalyze:
             page_1 = pages[p]
             interpreter.process_page(page_1)
             layout = device.get_result()
-        except :
+        except:
             return -1
         fp.close()
 
         return layout
 
 
-
-
-
 class PhysRev(PDFAnalyze):
     def __init__(self, path):
         super().__init__(path)
-
-
 
     def get_URL(self, layout):
 
         for l in layout:
             if isinstance(l, LTTextBoxHorizontal):
-                JournalInfo = re.search(r'DOI: \d+\.\d+/\w+\.\d+\.\d+', l.get_text())
+                JournalInfo = re.search(
+                    r'DOI: \d+\.\d+/\w+\.\d+\.\d+', l.get_text())
 
                 if JournalInfo:
                     if 'PhysRevLett' in JournalInfo.group():
@@ -66,89 +61,70 @@ class PhysRev(PDFAnalyze):
                     elif 'RevModPhys' in JournalInfo.group():
                         return 'https://journals.aps.org/rmp/abstract/' + JournalInfo.group()[5:]
 
-
         return -1
-
-
-
 
 
 class Nature(PDFAnalyze):
     def __init__(self, path):
         super().__init__(path)
 
-
-
     def get_URL(self, layout):
         for l in layout:
             if isinstance(l, LTTextBoxHorizontal):
                 JournalInfo1 = re.search(r'DOI: \d+\.\d+/\w+\d+', l.get_text())
-                JournalInfo2 = re.search(r'DOI: \d+\.\d+/\w+\.\d+.\d+', l.get_text())
+                JournalInfo2 = re.search(
+                    r'DOI: \d+\.\d+/\w+\.\d+.\d+', l.get_text())
                 JournalInfo3 = re.search(r'doi:\d+\.\d+/\w+\d+', l.get_text())
 
                 if JournalInfo1:
                     if 'NMAT' in JournalInfo1.group() or 'ncomms' in JournalInfo1.group() or\
-                             'NPHYS' in JournalInfo1.group():
+                            'NPHYS' in JournalInfo1.group():
                         return 'https://www.nature.com/articles/' + JournalInfo1.group()[13:].lower()
 
                 if JournalInfo2:
                     if 'NNANO' in JournalInfo2.group() or 'NPHOTON' in JournalInfo2.group():
-                        return 'https://www.nature.com/articles/' +JournalInfo2.group()[13:].lower()
+                        return 'https://www.nature.com/articles/' + JournalInfo2.group()[13:].lower()
 
                 if JournalInfo3:
                     if 'nature' in JournalInfo3.group():
-                        return 'https://www.nature.com/articles/' +JournalInfo3.group()[12:].lower()
-
+                        return 'https://www.nature.com/articles/' + JournalInfo3.group()[12:].lower()
 
         return -1
-
-
-
 
 
 class JPSJ(PDFAnalyze):
     def __init__(self, path):
         super().__init__(path)
 
-
-
     def get_URL(self, layout):
         for l in layout:
             if isinstance(l, LTTextBoxHorizontal):
-                JournalInfo = re.search(r'\d+\.\d+/JPSJ\.\d+\.\d+', l.get_text())
+                JournalInfo = re.search(
+                    r'\d+\.\d+/JPSJ\.\d+\.\d+', l.get_text())
                 if JournalInfo:
                     return 'http://journals.jps.jp/doi/' + JournalInfo.group()
 
         return -1
 
 
-
-
-
 class APL(PDFAnalyze):
     def __init__(self, path):
         super().__init__(path)
 
-
-
     def get_URL(self, layout):
         for l in layout:
             if isinstance(l, LTTextBoxHorizontal):
-                JournalInfo = re.search(r'http://dx.doi.org/\d+\.\d+/\d+\.\d+', l.get_text())
+                JournalInfo = re.search(
+                    r'http://dx.doi.org/\d+\.\d+/\d+\.\d+', l.get_text())
                 if JournalInfo:
                     return JournalInfo.group()
 
         return -1
 
 
-
-
-
 class URL:
     def __init__(self, path):
         self.path = path
-
-
 
     def DecideJournal(self):
         """
@@ -169,10 +145,9 @@ class URL:
                     return 'Nature', layout
                 if 'JPSJ' in l.get_text():
                     return 'JPSJ', layout
-        #TODO : search last page
+        # TODO : search last page
 
         return -1
-
 
     def get_URL(self):
         """

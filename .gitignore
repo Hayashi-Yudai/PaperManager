@@ -2,3 +2,5 @@
 *.db
 test.py
 build
+__pycache__
+venv
