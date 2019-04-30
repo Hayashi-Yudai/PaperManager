@@ -11,5 +11,6 @@ This app can
 
 ## Dependence
 
+- Python 3.7.2
 - PyQt5 5.12.1
 - PostgreSQL

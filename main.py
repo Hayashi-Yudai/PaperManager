@@ -4,13 +4,14 @@
 # ***********************************************************************************************
 
 from PyQt5.QtWidgets import (QAction, QApplication, QGridLayout, QHBoxLayout, QMainWindow, QMessageBox,
-                             QLabel, QLineEdit, QListWidget, QPushButton, QTextEdit, QVBoxLayout, QWidget)
+                             QLabel, QLineEdit, QListWidget, QPushButton, QTextEdit, QVBoxLayout, QWidget,
+                             QFileDialog)
 from PyQt5.QtGui import QIcon
 import os
+import subprocess
 import psycopg2
 
 import DataBase
-import LaTeX
 
 
 class MainWindow(QMainWindow):
@@ -68,19 +69,25 @@ class MainWindow(QMainWindow):
         self.Author = QLineEdit()
         self.Journal = QLineEdit()
         self.KeyWords = QLineEdit()
-        self.URL = QLineEdit()
+        self.Path = QLineEdit()
 
         Text_Entrance = QGridLayout()
         Text_Entrance.addWidget(QLabel('Title :'), 0, 0)
         Text_Entrance.addWidget(QLabel('Author :'), 1, 0)
         Text_Entrance.addWidget(QLabel('Journal :'), 2, 0)
         Text_Entrance.addWidget(QLabel('Key Words :'), 3, 0)
-        Text_Entrance.addWidget(QLabel('URL :'), 4, 0)
+        Text_Entrance.addWidget(QLabel('Path :'), 4, 0)
         Text_Entrance.addWidget(self.Title, 0, 1)
         Text_Entrance.addWidget(self.Author, 1, 1)
         Text_Entrance.addWidget(self.Journal, 2, 1)
         Text_Entrance.addWidget(self.KeyWords, 3, 1)
-        Text_Entrance.addWidget(self.URL, 4, 1)
+
+        Path_select = QGridLayout()
+        file_button = QPushButton('...')
+        file_button.clicked.connect(self.FileOpen)
+        Path_select.addWidget(self.Path, 0, 0)
+        Path_select.addWidget(file_button, 0, 1)
+        Text_Entrance.addLayout(Path_select, 4, 1)
 
         return Text_Entrance
 
@@ -118,11 +125,8 @@ class MainWindow(QMainWindow):
         text.addLayout(Search_items)
         text.addLayout(TeXCopy)
 
-        """
         self.Search_result.itemDoubleClicked.connect(
             lambda item: self.OpenPDF(item))
-        self.CopyButton.clicked.connect(self.copy_tex)
-        """
 
         return text
 
@@ -131,10 +135,11 @@ class MainWindow(QMainWindow):
         authors = self.Author.text()
         journal = self.Journal.text()
         keyword = self.KeyWords.text()
+        path = self.Path.text()
 
         db = DataBase.PaperDataBase('test', 'yudai')
         try:
-            db.register(title, authors, journal, keyword)
+            db.register(title, authors, journal, keyword, path)
         except psycopg2.errors.NotNullViolation:
             QMessageBox.warning(
                 self, 'Message', 'The title should not be empty'
@@ -152,6 +157,18 @@ class MainWindow(QMainWindow):
         self.Search_result.clear()
         for item in result:
             self.Search_result.addItem(item)
+
+    def FileOpen(self):
+        fname = QFileDialog.getOpenFileName(
+            self, 'Select File', '/home/yudai/Documents/papers'
+        )
+        self.Path.setText(fname[0])
+
+    def OpenPDF(self, item):
+        db = DataBase.PaperDataBase('test', 'yudai')
+        result = db.search_pdf_path(item.text())
+        if result != '':
+            subprocess.Popen(['okular', result])
 
 
 if __name__ == '__main__':
