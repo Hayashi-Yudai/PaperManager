@@ -16,16 +16,17 @@ class PaperDataBase:
                 authors varchar(200), \
                 journal_name varchar(100), \
                 keywords varchar(200), \
+                path varchar(200), \
                 primary key (title) \
             );"
         )
 
-    def register(self, title, author, journal, keyword):
+    def register(self, title, author, journal, keyword, path):
         title = title if title != '' else None
         self.cursor.execute(
-            "insert into paper_list (title, authors, journal_name, keywords) values \
-            (%s, %s, %s, %s);",
-            (title, author, journal, keyword)
+            "insert into paper_list (title, authors, journal_name, keywords, path) values \
+            (%s, %s, %s, %s, %s);",
+            (title, author, journal, keyword, path)
         )
 
         self.connect.commit()
@@ -33,8 +34,7 @@ class PaperDataBase:
 
     def search(self, title, author, journal, keyword):
         query = "select * from paper_list \
-                    where title = %s \
-                    and authors = '*'; \
+                    where title = %s; \
                 "
         self.cursor.execute(query, (title,))
         result = []
@@ -44,6 +44,17 @@ class PaperDataBase:
         self.connect.close()
 
         return result
+
+    def search_pdf_path(self, title):
+        query = "select * from paper_list \
+                    where title = %s; \
+                "
+        self.cursor.execute(query, (title,))
+        for c in self.cursor:
+            result = c[-1]
+            self.connect.close()
+
+            return result
 
 
 if __name__ == '__main__':

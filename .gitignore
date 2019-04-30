@@ -1,6 +1,7 @@
 #do not save database file
 *.db
-test.py
+LaTeX.py
+WebScriping.py
 build
 __pycache__
 venv
